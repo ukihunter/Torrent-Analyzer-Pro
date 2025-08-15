@@ -45,7 +45,7 @@ import json
 from datetime import datetime
 
 # Set appearance mode and color theme
-ctk.set_appearance_mode("dark")
+ctk.set_appearance_mode("light")
 ctk.set_default_color_theme("blue")
 
 torrentool = None
@@ -665,6 +665,72 @@ class ModernTorrentViewer(ctk.CTk):
         
         self.create_sidebar()
         self.create_main_content()
+        
+        # Show welcome message
+        self.show_welcome_message()
+        
+    def show_welcome_message(self):
+        """Show welcome message with GitHub star request"""
+        welcome_msg = (
+            "Welcome to Torrent Analyzer Pro!\n\n"
+            "Thanks for using our app! If you find it helpful,\n"
+            "please give us a star on GitHub:\n\n"
+            "github.com/ukihunter/Torrent-Analyzer-Pro\n\n"
+            "Happy analyzing! 🚀"
+        )
+        
+        # Create custom dialog
+        dialog = ctk.CTkToplevel(self)
+        dialog.title("Welcome!")
+        dialog.geometry("400x280")
+        dialog.resizable(False, False)
+        
+        # Center the dialog
+        dialog.transient(self)
+        dialog.grab_set()
+        
+        # Main frame
+        main_frame = ctk.CTkFrame(dialog)
+        main_frame.pack(fill="both", expand=True, padx=20, pady=20)
+        
+        # Welcome text
+        text_label = ctk.CTkLabel(
+            main_frame,
+            text=welcome_msg,
+            font=ctk.CTkFont(family="Segoe UI", size=13),
+            wraplength=350,
+            justify="center"
+        )
+        text_label.pack(pady=15)
+        
+        # Buttons frame
+        button_frame = ctk.CTkFrame(main_frame, fg_color="transparent")
+        button_frame.pack(pady=10)
+        
+        # GitHub button
+        github_btn = ctk.CTkButton(
+            button_frame,
+            text="⭐ Star on GitHub",
+            command=lambda: self.open_github(),
+            height=35,
+            font=ctk.CTkFont(family="Segoe UI", size=12, weight="bold")
+        )
+        github_btn.pack(side="left", padx=5)
+        
+        # Close button
+        close_btn = ctk.CTkButton(
+            button_frame,
+            text="Continue",
+            command=dialog.destroy,
+            height=35,
+            font=ctk.CTkFont(family="Segoe UI", size=12, weight="bold")
+        )
+        close_btn.pack(side="left", padx=5)
+        
+    def open_github(self):
+        """Open GitHub repository in browser"""
+        import webbrowser
+        webbrowser.open("https://github.com/ukihunter/Torrent-Analyzer-Pro")
         
     def create_sidebar(self):
         # Sidebar frame

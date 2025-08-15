@@ -211,7 +211,7 @@ def scrape_http_tracker(announce_url, info_hash):
                         file_data = files[info_hash]
                         seeders = file_data.get(b'complete', 0)
                         leechers = file_data.get(b'incomplete', 0)
-                        print(f"✅ HTTP tracker success: {seeders} seeders, {leechers} leechers")
+                        print(f" HTTP tracker success: {seeders} seeders, {leechers} leechers")
                         return seeders, leechers
                 except:
                     pass
@@ -280,7 +280,7 @@ def scrape_udp_tracker(announce_url, info_hash):
                     sock.sendto(scrape_request, (host, port))
                     data, addr = sock.recvfrom(1024)
                 except socket.timeout:
-                    print(f"  ⏰ Scrape timeout from {host}:{port}")
+                    print(f"   Scrape timeout from {host}:{port}")
                     sock.close()
                     return 0, 0
                 
@@ -1081,3 +1081,4 @@ class ModernTorrentViewer(ctk.CTk):
 if __name__ == '__main__':
     app = ModernTorrentViewer()
     app.mainloop()
+

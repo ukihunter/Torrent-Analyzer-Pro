@@ -1,4 +1,4 @@
-# 🔌👻 Torrent Analyzer Pro
+#  Torrent Analyzer Pro
 
 A modern, professional torrent file analyzer with real-time tracker scraping and security features. Built with Python and CustomTkinter for a sleek, modern UI experience.
 
@@ -108,3 +108,4 @@ This project is open source and available under the [MIT License](LICENSE).
 - **Privacy**: Enable VPN check for enhanced privacy protection
 - **Performance**: Adjust max tracker attempts based on your internet speed
 - **Accuracy**: Wait for the analysis to complete for most accurate results
+
